@@ -225,6 +225,16 @@ class PgSpec extends AnyFlatSpec with TestContainerForAll {
 }
 ```
 
+### Opensearch
+
+Required supplementaries libraries:
+
+```scala
+libraryDependencies ++= Seq(
+   "com.dimafeng" %% "testcontainers-scala-opensearch" % testcontainersScalaVersion % Test
+)
+```
+
 ## Multiple Containers
 
 If you want to use multiple containers for all tests in your suite:
