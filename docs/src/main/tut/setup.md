@@ -37,6 +37,11 @@ libraryDependencies += "com.dimafeng" %% "testcontainers-scala-scalatest" % test
 libraryDependencies += "com.dimafeng" %% "testcontainers-scala-munit" % testcontainersScalaVersion % "it"
 ```
 
+* For Specs2 users:
+```scala
+libraryDependencies += "com.dimafeng" %% "testcontainers-scala-specs2" % testcontainersScalaVersion % "it"
+```
+
 The library above will enable you to launch a generic docker container or docker-compose environment from your tests. Optionally, you can also add supplementary libraries for technology-specific containers (e.g. Postgres, Kafka, NGinx,...), see the [Module](#modules) section below.
 
 

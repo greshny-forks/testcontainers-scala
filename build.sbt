@@ -72,6 +72,7 @@ lazy val root = (project in file("."))
     core,
     munit,
     scalatest,
+    specs2,
     scalatestSelenium,
     jdbc,
     moduleMysql,
@@ -249,13 +250,23 @@ lazy val munit = (project in file("test-framework/munit"))
     libraryDependencies ++= Dependencies.munit.value
   )
 
-lazy val scalatestSelenium = (project in file("test-framework/scalatest-selenium"))
-  .dependsOn(scalatest % "compile->compile;test->test;provided->provided")
+lazy val specs2 = project
+  .in(file("test-framework/specs2"))
+  .dependsOn(core % "compile->compile;test->test;provided->provided")
   .settings(commonSettings)
   .settings(
-    name := "testcontainers-scala-scalatest-selenium",
-    libraryDependencies ++= Dependencies.scalatestSelenium.value
+    name := "testcontainers-scala-specs2",
+    libraryDependencies ++= Dependencies.specs2.value
   )
+
+lazy val scalatestSelenium =
+  (project in file("test-framework/scalatest-selenium"))
+    .dependsOn(scalatest % "compile->compile;test->test;provided->provided")
+    .settings(commonSettings)
+    .settings(
+      name := "testcontainers-scala-scalatest-selenium",
+      libraryDependencies ++= Dependencies.scalatestSelenium.value
+    )
 
 lazy val jdbc = (project in file("modules/jdbc"))
   .dependsOn(core % "compile->compile;test->test;provided->provided")
